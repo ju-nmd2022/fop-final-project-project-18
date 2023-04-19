@@ -16,18 +16,14 @@ function lawnMower() {
   // lawnmower wheel
   strokeWeight(4 * s);
   stroke(0);
-  fill(51);
+  fill(61);
   ellipse(x + 20 * s, y + 40 * s, 20 * s, 20 * s);
-
-  // lawnmower blade
-  strokeWeight(8 * s);
-  stroke(0);
-  line(x - 10 * s, y + 10 * s, x + 90 * s, y + 10 * s);
+  ellipse(x + 60 * s, y + 40 * s, 20 * s, 20 * s);
 
   // lawnmower handle
   strokeWeight(4 * s);
   stroke(0);
-  line(x + 40 * s, y - 10 * s, x + 70 * s, y - 30 * s);
+  line(x + 70 * s, y, x + 90 * s, y - 30 * s);
 }
 function bush(x, y, s) {
   fill(0, 120, 0);
