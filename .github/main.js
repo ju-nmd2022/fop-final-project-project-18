@@ -6,24 +6,47 @@ function startScreen() {
   fill(126, 200, 80);
   rect(0, 0, 800);
 }
-function lawnMower() {
+function playerOne(x, y, s) {
+  push();
+  strokeWeight(2);
+  // beige foot
+  fill(217, 179, 130);
+  rect(x - 20, y + 400 * s, 40 * s, 20 * s);
+  rect(x + 100, y + 400 * s, 40 * s, 20 * s);
+  // loght blue legs
+  fill(0, 220, 255);
+  rect(x - 20, y + 380 * s, 60 * s, 20 * s);
+  rect(x + 100, y + 380 * s, 40 * s, 20 * s);
+  //dark blue legs
+  fill(0, 0, 100);
+  rect(x, y + 360 * s, 70 * s, 20 * s);
+  rect(x + 30, y + 340, 40, 40);
+  rect(x + 100, y + 340, 40, 40);
+  rect(x + 30, y + 330, 110, 30);
+  //red body
+  fill(255, 0, 0);
+  rect(x + 30, y + 230, 110, 100);
+
+  pop();
+}
+function lawnMower(x, y, s) {
   // lawnmower body
   strokeWeight(4 * s);
   stroke(0);
   fill(255, 204, 0);
-  rect(x, y, 80 * s, 40 * s, 10 * s);
+  rect(x, y, 80 * s, 20 * s, 10 * s);
 
   // lawnmower wheel
   strokeWeight(4 * s);
   stroke(0);
   fill(61);
-  ellipse(x + 20 * s, y + 40 * s, 20 * s, 20 * s);
-  ellipse(x + 60 * s, y + 40 * s, 20 * s, 20 * s);
+  ellipse(x + 20 * s, y + 20 * s, 20 * s, 20 * s);
+  ellipse(x + 60 * s, y + 20 * s, 20 * s, 20 * s);
 
   // lawnmower handle
   strokeWeight(4 * s);
   stroke(0);
-  line(x + 70 * s, y, x + 90 * s, y - 30 * s);
+  line(x + 70 * s, y, x + 100 * s, y - 40 * s);
 }
 function bush(x, y, s) {
   fill(0, 120, 0);
@@ -74,7 +97,8 @@ function gameScreen() {
   bush(450, 400, 0.4);
   bush(100, 550, 0.7);
   bush(440, 590, 0.4);
-  lawnMower(200, 200, 1.0);
+  lawnMower(600, 200, 0.7);
+  playerOne(100, 100, 1.0);
 }
 function leaderBoardScreen() {
   rect(100, 100, 10);
