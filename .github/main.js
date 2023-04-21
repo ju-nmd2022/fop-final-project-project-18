@@ -20,12 +20,30 @@ function playerOne(x, y, s) {
   //dark blue legs
   fill(0, 0, 100);
   rect(x, y + 360 * s, 70 * s, 20 * s);
-  rect(x + 30, y + 340, 40, 40);
-  rect(x + 100, y + 340, 40, 40);
-  rect(x + 30, y + 330, 110, 30);
+  rect(x + 30 * s, y + 340 * s, 40 * s, 40 * s);
+  rect(x + 100 * s, y + 340 * s, 40 * s, 40 * s);
+  rect(x + 30 * s, y + 330 * s, 110 * s, 30 * s);
   //red body
   fill(255, 0, 0);
-  rect(x + 30, y + 230, 110, 100);
+  rect(x + 30 * s, y + 230 * s, 110 * s, 100 * s);
+
+  //the body
+  fill(217, 179, 130);
+  rect(x - 10 * s, y + 290 * s, 40 * s, 40 * s);
+  rect(x + 10 * s, y + 270 * s, 40 * s, 20 * s);
+  rect(x + 140 * s, y + 290 * s, 40 * s, 40 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  rect(x + 50 * s, y + 150 * s, 110 * s, 80 * s);
+  //hair
+  fill(0, 0, 0);
+  rect(x + 30 * s, y + 150 * s, 20 * s, 40 * s);
+  rect(x + 10 * s, y + 150 * s, 30 * s, 20 * s);
+  //hat
+  fill(230, 120, 0);
+  rect(x - 10 * s, y + 130 * s, 220 * s, 20 * s);
+  rect(x + 15 * s, y + 70 * s, 160 * s, 60 * s);
+  rect(x + 60 * s, y + 50 * s, 90 * s, 20 * s);
+  // eyes
 
   pop();
 }
