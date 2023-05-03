@@ -10,20 +10,16 @@ function startScreen() {
 }
 function playerOne(x, y, s) {
   if (keyIsDown(LEFT_ARROW)) {
-    // if the left arrow key is pressed
-    x -= 5; // move playerOne 5 pixels to the left
-  }
-  if (keyIsDown(RIGHT_ARROW)) {
-    // if the right arrow key is pressed
-    x += 5; // move playerOne 5 pixels to the right
+    x -= 5;
+    reversedPlayerOne();
+  } else if (keyIsDown(RIGHT_ARROW)) {
+    x += 5;
   }
   if (keyIsDown(UP_ARROW)) {
-    // if the up arrow key is pressed
-    y -= 5; // move playerOne 5 pixels up
+    y -= 5;
   }
   if (keyIsDown(DOWN_ARROW)) {
-    // if the down arrow key is pressed
-    y += 5; // move playerOne 5 pixels down
+    y += 5;
   }
   push();
   strokeWeight(0);
@@ -81,15 +77,15 @@ function reversedPlayerOne(x, y, s) {
   strokeWeight(0);
   // beige foot
   fill(217, 179, 130);
-  rect(x - 20 * s, y + 400 * s, 40 * s, 20 * s);
-  rect(x + 100 * s, y + 400 * s, 40 * s, 20 * s);
-  // loght blue legs
+  rect(x + 30 * s, y + 400 * s, 40 * s, 20 * s);
+  rect(x + 150 * s, y + 400 * s, 40 * s, 20 * s);
+  // light blue legs
   fill(0, 220, 255);
-  rect(x - 20 * s, y + 380 * s, 60 * s, 20 * s);
-  rect(x + 100 * s, y + 380 * s, 40 * s, 20 * s);
+  rect(x + 130 * s, y + 380 * s, 60 * s, 20 * s);
+  rect(x + 30 * s, y + 380 * s, 40 * s, 20 * s);
   //dark blue legs
   fill(0, 0, 100);
-  rect(x, y + 360 * s, 70 * s, 20 * s);
+  rect(x + 90 * s, y + 360 * s, 70 * s, 20 * s);
   rect(x + 30 * s, y + 340 * s, 40 * s, 40 * s);
   rect(x + 100 * s, y + 340 * s, 40 * s, 40 * s);
   rect(x + 30 * s, y + 330 * s, 110 * s, 30 * s);
@@ -100,26 +96,26 @@ function reversedPlayerOne(x, y, s) {
   //the body
   fill(217, 179, 130);
   rect(x - 10 * s, y + 290 * s, 40 * s, 40 * s);
-  rect(x + 10 * s, y + 270 * s, 40 * s, 20 * s);
+  rect(x + 10 * s, y + 270 * s, 20 * s, 20 * s);
   rect(x + 140 * s, y + 290 * s, 40 * s, 40 * s);
-  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
-  rect(x + 50 * s, y + 150 * s, 110 * s, 80 * s);
+  rect(x + 120 * s, y + 270 * s, 40 * s, 20 * s);
+  rect(x + 10 * s, y + 150 * s, 110 * s, 80 * s);
   //hair
   fill(0, 0, 0);
-  rect(x + 30 * s, y + 150 * s, 20 * s, 40 * s);
-  rect(x + 10 * s, y + 150 * s, 30 * s, 20 * s);
+  rect(x + 120 * s, y + 150 * s, 20 * s, 40 * s);
+  rect(x + 140 * s, y + 150 * s, 30 * s, 20 * s);
   //hat
   fill(230, 120, 0);
-  rect(x - 10 * s, y + 130 * s, 220 * s, 20 * s);
-  rect(x + 15 * s, y + 70 * s, 160 * s, 60 * s);
-  rect(x + 60 * s, y + 50 * s, 90 * s, 20 * s);
+  rect(x - 30 * s, y + 130 * s, 220 * s, 20 * s);
+  rect(x + 5 * s, y + 70 * s, 160 * s, 60 * s);
+  rect(x + 40 * s, y + 50 * s, 90 * s, 20 * s);
   // eyes
   fill(255, 255, 255);
-  rect(x + 50 * s, y + 150 * s, 25 * s, 25 * s);
-  rect(x + 110 * s, y + 150 * s, 25 * s, 25 * s);
+  rect(x + 30 * s, y + 150 * s, 25 * s, 25 * s);
+  rect(x + 95 * s, y + 150 * s, 25 * s, 25 * s);
   fill(0, 0, 0);
-  rect(x + 75 * s, y + 150 * s, 25 * s, 25 * s);
-  rect(x + 135 * s, y + 150 * s, 25 * s, 25 * s);
+  rect(x + 10 * s, y + 150 * s, 25 * s, 25 * s);
+  rect(x + 70 * s, y + 150 * s, 25 * s, 25 * s);
 
   //mouth
   fill(255, 179, 179);
@@ -198,7 +194,6 @@ function gameScreen() {
   bush(440, 590, 0.4);
   lawnMower(600, 200, 0.7);
   playerOne(playerX, playerY, 0.2);
-  reversedPlayerOne(playerX, playerY, 0.9);
 }
 function leaderBoardScreen() {
   rect(100, 100, 10);
