@@ -11,7 +11,6 @@ function startScreen() {
 function playerOne(x, y, s) {
   if (keyIsDown(LEFT_ARROW)) {
     x -= 5;
-    reversedPlayerOne();
   } else if (keyIsDown(RIGHT_ARROW)) {
     x += 5;
   }
