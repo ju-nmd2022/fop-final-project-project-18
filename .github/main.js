@@ -1,15 +1,16 @@
 let x = 100;
 let y = 100;
 let s = 1.0;
-let playerX = 200;
-let playerY = 200;
-let move = 20;
+let playerX = 350;
+let playerY = 350;
+let move = 15;
+let newPlayerY = 500;
 
 function startScreen() {
   fill(126, 200, 80);
   rect(0, 0, 800);
 }
-function playerFlower(x,y,s){
+function playerFlower(x, y, s) {
   if (keyIsDown(LEFT_ARROW)) {
     x -= move;
   } else if (keyIsDown(RIGHT_ARROW)) {
@@ -78,7 +79,7 @@ function playerFlower(x,y,s){
   rect(x + 190 * s, y + 270 * s, 10 * s, 20 * s);
   rect(x + 200 * s, y + 260 * s, 10 * s, 10 * s);
   fill(255, 0, 0);
-  
+
   rect(x + 160 * s, y + 230 * s, 30 * s, 45 * s);
   rect(x + 160 * s, y + 250 * s, 30 * s, 20 * s);
   fill(255, 255, 0);
@@ -264,6 +265,43 @@ function flowers(x, y, s) {
   fill(255, 255, 0);
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
 }
+function flowerYellow(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(255, 255, 0);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+function flowerBlue(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(0, 0, 255);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+
 function gameScreen() {
   fill(126, 200, 80);
   rect(0, 0, 800);
@@ -301,16 +339,24 @@ function gameScreen() {
   flowers(x + 400, y + 200, 0.2);
   flowers(x + 200, y + 900, 0.2);
   flowers(x + 500, y + 500, 0.2);
-playerFlower(playerX,playerY,0.2);
-playerOne(playerX, playerY, 0.2);
+  playerFlower(playerX, playerY, 0.2);
 }
 function leaderBoardScreen() {
   rect(100, 100, 10);
 }
 
-function keyIsPressed(){
-}
-function keyReleased(){
+function flowerCollision() {
+  for (let i = 0; i < flowerArray.length; i++) {
+    let characterCollision = flowerArray[i];
+    if (
+      playerX > characterCollision.x &&
+      playerX < characterCollision.x + characterCollision.width &&
+      playerY < characterCollision.y &&
+      playerY + 30 > characterCollision.y
+    ) {
+      playerY = newPlayerY;
+    }
+  }
 }
 let state = "game";
 function draw() {
@@ -324,5 +370,33 @@ function draw() {
   } else if (state === "bush") {
     bush();
   }
+  // let flower = {
+  //   colour: red,
+  //   x: 500,
+  //   y: 100,
+  // };
+  // let flowerYellow = {
+  //   colour: yellow,
+  //   x: 200,
+  //   y: 600,
+  // };
+  // let flowerBlue = {
+  //   colour: blue,
+  //   x: 100,
+  //   y: 300,
+  // };
 }
-
+//Array
+let flowerArray = [flower1, flower2];
+let flower1 = {
+  x: 129,
+  y: 478,
+  width: 20,
+  height: 50,
+};
+let flower2 = {
+  x: 530,
+  y: 357,
+  width: 20,
+  height: 50,
+};
