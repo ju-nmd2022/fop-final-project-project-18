@@ -4,7 +4,6 @@ let s = 1.0;
 let playerX = 350;
 let playerY = 350;
 let move = 15;
-let newPlayerY = 500;
 
 function startScreen() {
   fill(126, 200, 80);
@@ -302,7 +301,21 @@ function flowerBlue(x, y, s) {
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
 }
 
+// function flowerCollision(playerX, playerY) {
+//   for (let i = 0; i < flowerArray.length; i++) {
+//     let characterCollision = flowerArray[i];
+//     if (
+//       playerX > characterCollision.x &&
+//       playerX < characterCollision.x + characterCollision.width &&
+//       playerY < characterCollision.y &&
+//       playerY + 30 > characterCollision.y
+//     ) {
+//       // Handle collision logic here
+//     }
+//   }
+// }
 function gameScreen() {
+
   fill(126, 200, 80);
   rect(0, 0, 800);
   noStroke();
@@ -340,26 +353,68 @@ function gameScreen() {
   flowers(x + 200, y + 900, 0.2);
   flowers(x + 500, y + 500, 0.2);
   playerFlower(playerX, playerY, 0.2);
+  for (let i = 0; i < flowerArray.length; i++) {
+    let flower = flowerArray[i];
+    fill(255); // Set the fill color for the flowers
+    rect(flower.x, flower.y, flower.width, flower.height);
+  }
 }
 function leaderBoardScreen() {
   rect(100, 100, 10);
 }
 
-function flowerCollision() {
-  for (let i = 0; i < flowerArray.length; i++) {
+// Define the flower objects
+var flower = {
+  x: 130,
+  y: 120,
+  width: 20,
+  height: 55
+};
+var flower4 = {
+  x: 230,
+  y: 620,
+  width: 20,
+  height: 55
+};
+var flower3 = {
+  x: 100,
+  y: 300,
+};
+var flower1 = {
+  x: 130,
+  y: 420,
+  width: 20,
+  height: 55,
+};
+var flower2 = {
+  x: 530,
+  y: 327,
+  width: 20,
+  height: 50,
+};
+
+let flowerArray = [flower1, flower2, flower4, flower,flower3];
+let state = "game";
+function draw() {
+  flowerCollision(playerX, playerY);
+
+  // Other drawing and rendering logic
+}
+
+function flowerCollision(playerX, playerY) {
+   for (let i = 0; i < flowerArray.length; i++) {
     let characterCollision = flowerArray[i];
     if (
       playerX > characterCollision.x &&
       playerX < characterCollision.x + characterCollision.width &&
       playerY < characterCollision.y &&
-      playerY + 30 > characterCollision.y
+      playerY + 40 > characterCollision.y
     ) {
-      playerY = newPlayerY;
+      // Collision detected, you can perform actions here
+      console.log('Collision detected', i);
     }
   }
-}
-let state = "game";
-function draw() {
+
   if (state === "start") {
     startScreen();
   } else if (state === "game") {
@@ -367,36 +422,7 @@ function draw() {
   } else if (state === "leaderBoard") {
     leaderBoardScreen();
     playerOne();
-  } else if (state === "bush") {
-    bush();
   }
-  // let flower = {
-  //   colour: red,
-  //   x: 500,
-  //   y: 100,
-  // };
-  // let flowerYellow = {
-  //   colour: yellow,
-  //   x: 200,
-  //   y: 600,
-  // };
-  // let flowerBlue = {
-  //   colour: blue,
-  //   x: 100,
-  //   y: 300,
-  // };
+
+
 }
-//Array
-let flowerArray = [flower1, flower2];
-let flower1 = {
-  x: 129,
-  y: 478,
-  width: 20,
-  height: 50,
-};
-let flower2 = {
-  x: 530,
-  y: 357,
-  width: 20,
-  height: 50,
-};
