@@ -315,7 +315,6 @@ function flowerBlue(x, y, s) {
 //   }
 // }
 function gameScreen() {
-
   fill(126, 200, 80);
   rect(0, 0, 800);
   noStroke();
@@ -344,18 +343,14 @@ function gameScreen() {
   lawnMower(600, 200, 0.7);
   //flowers
   flowers(x, y, 0.2);
-  flowers(x + 100, y + 300, 0.2);
-  flowers(x + 100, y + 300, 0.2);
-  flowers(x + 300, y + 300, 0.2);
   flowers(x, y + 300, 0.2);
   flowers(x + 100, y + 500, 0.2);
   flowers(x + 400, y + 200, 0.2);
-  flowers(x + 200, y + 900, 0.2);
-  flowers(x + 500, y + 500, 0.2);
+
   playerFlower(playerX, playerY, 0.2);
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
-    fill(255); // Set the fill color for the flowers
+    fill(255, 255, 255); // Set the fill color for the flowers
     rect(flower.x, flower.y, flower.width, flower.height);
   }
 }
@@ -368,13 +363,13 @@ var flower = {
   x: 130,
   y: 120,
   width: 20,
-  height: 55
+  height: 55,
 };
 var flower4 = {
   x: 230,
   y: 620,
   width: 20,
-  height: 55
+  height: 55,
 };
 var flower3 = {
   x: 100,
@@ -393,7 +388,7 @@ var flower2 = {
   height: 50,
 };
 
-let flowerArray = [flower1, flower2, flower4, flower,flower3];
+let flowerArray = [flower1, flower2, flower4, flower, flower3];
 let state = "game";
 function draw() {
   flowerCollision(playerX, playerY);
@@ -402,7 +397,7 @@ function draw() {
 }
 
 function flowerCollision(playerX, playerY) {
-   for (let i = 0; i < flowerArray.length; i++) {
+  for (let i = 0; i < flowerArray.length; i++) {
     let characterCollision = flowerArray[i];
     if (
       playerX > characterCollision.x &&
@@ -411,7 +406,7 @@ function flowerCollision(playerX, playerY) {
       playerY + 40 > characterCollision.y
     ) {
       // Collision detected, you can perform actions here
-      console.log('Collision detected', i);
+      console.log("Collision detected", i);
     }
   }
 
@@ -423,6 +418,4 @@ function flowerCollision(playerX, playerY) {
     leaderBoardScreen();
     playerOne();
   }
-
-
 }
