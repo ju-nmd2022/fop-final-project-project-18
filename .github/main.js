@@ -5,6 +5,7 @@ let playerX = 350;
 let playerY = 350;
 let move = 15;
 let flowerCollected = 0;
+let mowerX = 600; // Initial x-coordinate of the lawnmower
 
 function flowers(x, y, s) {
   fill(0, 255, 0);
@@ -119,6 +120,7 @@ function bush(x, y, s) {
   rect(x + 70 * s, y + 115 * s, 25 * s, 25 * s);
   rect(x + 110 * s, y + 115 * s, 25 * s, 25 * s);
 }
+
 function lawnMower(x, y, s) {
   // lawnmower body
   strokeWeight(4 * s);
@@ -336,6 +338,10 @@ function reversedPlayerOne(x, y, s) {
 function startScreen() {
   fill(126, 200, 80);
   rect(0, 0, 800);
+  fill(255, 255, 255);
+  rect(280, 260, 250, 70);
+  fill(0, 0, 0);
+  text("Welcome to the game of flower picking", 300, 300);
 }
 function gameScreen() {
   fill(126, 200, 80);
@@ -363,8 +369,16 @@ function gameScreen() {
   bush(450, 400, 0.4);
   bush(100, 550, 0.7);
   bush(440, 590, 0.4);
-  lawnMower(600, 200, 0.7);
   //flowers
+
+  // Call the lawnmower function with the updated x-coordinate
+  // lawnMower(mowerX, 200, 0.7);
+  // if (mowerX >= 100) {
+  //   mowerX -= 2; // Move left
+  // } else if (mowerX <= 100) {
+  //   mowerX += 3; // Move right
+
+  // }
   flowerBrown(x + 370, y + 480, 0.2);
   flowerPink(x, y, 0.2);
   flowerBlue(x, y + 300, 0.2);
