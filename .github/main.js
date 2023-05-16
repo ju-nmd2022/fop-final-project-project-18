@@ -384,6 +384,7 @@ function gameScreen() {
   flowerBlue(x, y + 300, 0.2);
   flowerYellow(x + 100, y + 500, 0.2);
   flowers(x + 400, y + 200, 0.2);
+  
 
   playerFlower(playerX, playerY, 0.2);
   //Got help from oliver and charlie on this code!
