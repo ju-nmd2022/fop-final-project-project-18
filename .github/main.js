@@ -372,21 +372,23 @@ function gameScreen() {
   flowers(x + 400, y + 200, 0.2);
 
   playerFlower(playerX, playerY, 0.2);
+  //Got help from oliver and charlie on this code!
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
-    fill(255, 255, 255,0.3); // Set the fill color for the flowers
+    fill(255, 255, 255, 0.3); // Set the fill color for the flowers
     rect(flower.x, flower.y, flower.width, flower.height);
   }
-  fill(0,160,0);
-  rect(90,710,200,80);
-  fill(0,255,0);
+  //to here
+  fill(0, 160, 0);
+  rect(90, 710, 200, 80);
+  fill(0, 255, 0);
   textSize(20);
-    text("Flower collected: " + flowerCollected, 100, 750);
+  text("Flower collected: " + flowerCollected, 100, 750);
 }
 function leaderBoardScreen() {
-  background(0,0,0);
-  fill(255,255,255);
-  rect(100, 100, 600,600);
+  background(0, 0, 0);
+  fill(255, 255, 255);
+  rect(100, 100, 600, 600);
 }
 
 // Define the flower objects
@@ -405,8 +407,8 @@ var flower4 = {
 var flower3 = {
   x: 500,
   y: 600,
-  width:  20,
-  height: 55
+  width: 20,
+  height: 55,
 };
 var flower1 = {
   x: 130,
@@ -427,32 +429,31 @@ function draw() {
   flowerCollision(playerX, playerY);
   // Other drawing and rendering logic
 
+  function flowerCollision(playerX, playerY) {
+    for (let i = 0; i < flowerArray.length; i++) {
+      let characterCollision = flowerArray[i];
+      if (
+        playerX > characterCollision.x &&
+        playerX < characterCollision.x + characterCollision.width &&
+        playerY < characterCollision.y &&
+        playerY + 40 > characterCollision.y
+      ) {
+        // Collision detected, you can perform actions here
+        flowerCollected++;
+        console.log(flowerCollected, i);
+      }
+    }
 
-function flowerCollision(playerX, playerY) {
-  for (let i = 0; i < flowerArray.length; i++) {
-    let characterCollision = flowerArray[i];
-    if (
-      playerX > characterCollision.x &&
-      playerX < characterCollision.x + characterCollision.width &&
-      playerY < characterCollision.y &&
-      playerY + 40 > characterCollision.y
-    ) {
-      // Collision detected, you can perform actions here
-      flowerCollected ++;
-      console.log(flowerCollected, i);
+    if (state === "start") {
+      startScreen();
+    } else if (state === "game") {
+      gameScreen();
+    } else if (state === "leaderBoard") {
+      leaderBoardScreen();
+    }
+    if (flowerCollected > 10) {
+      state = "leaderBoard";
+      console.log("win");
     }
   }
-
-  if (state === "start") {
-    startScreen();
-  } else if (state === "game") {
-    gameScreen();
-  } else if (state === "leaderBoard") {
-    leaderBoardScreen();
-  }
-  if (flowerCollected > 10){
- state = "leaderBoard";
-    console.log("win");
-  }
-}
 }
