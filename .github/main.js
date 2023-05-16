@@ -4,10 +4,139 @@ let s = 1.0;
 let playerX = 350;
 let playerY = 350;
 let move = 15;
+let flowerCollected = 0;
 
-function startScreen() {
-  fill(126, 200, 80);
-  rect(0, 0, 800);
+function flowers(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(255, 0, 0);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+function flowerPink(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(255, 0, 200);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+function flowerBrown(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(160, 100, 100);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+function flowerYellow(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(255, 255, 0);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+function flowerBlue(x, y, s) {
+  fill(0, 255, 0);
+  noStroke();
+  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+  fill(0, 0, 255);
+  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+  fill(255, 255, 0);
+  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+}
+function bush(x, y, s) {
+  fill(0, 120, 0);
+  rect(x, y + 100 * s, 40 * s, 40 * s);
+  rect(x + 40 * s, y + 100 * s, 40 * s, 40 * s);
+  fill(0, 130, 0);
+  rect(x + 80 * s, y + 100 * s, 40 * s, 40 * s);
+  fill(0, 110, 0);
+  rect(x + 120 * s, y + 100 * s, 40 * s, 40 * s);
+  fill(0, 120, 0);
+  rect(x + 160 * s, y + 100 * s, 40 * s, 40 * s);
+  fill(0, 111, 0);
+  rect(x + 20 * s, y + 60 * s, 40 * s, 40 * s);
+  rect(x + 60 * s, y + 60 * s, 40 * s, 40 * s);
+  fill(0, 120, 0);
+  rect(x + 100 * s, y + 60 * s, 40 * s, 40 * s);
+  rect(x + 140 * s, y + 60 * s, 40 * s, 40 * s);
+  fill(0, 130, 0);
+  rect(x + 60 * s, y + 20 * s, 40 * s, 40 * s);
+  rect(x + 100 * s, y + 20 * s, 40 * s, 40 * s);
+  fill(0, 110, 0);
+  rect(x + 70 * s, y + 115 * s, 25 * s, 25 * s);
+  rect(x + 110 * s, y + 115 * s, 25 * s, 25 * s);
+}
+function lawnMower(x, y, s) {
+  // lawnmower body
+  strokeWeight(4 * s);
+  stroke(0);
+  fill(255, 204, 0);
+  rect(x, y, 80 * s, 20 * s, 10 * s);
+
+  // lawnmower wheel
+  strokeWeight(4 * s);
+  stroke(0);
+  fill(61);
+  ellipse(x + 20 * s, y + 20 * s, 20 * s, 20 * s);
+  ellipse(x + 60 * s, y + 20 * s, 20 * s, 20 * s);
+
+  // lawnmower handle
+  strokeWeight(4 * s);
+  stroke(0);
+  line(x + 70 * s, y, x + 100 * s, y - 40 * s);
 }
 function playerFlower(x, y, s) {
   if (keyIsDown(LEFT_ARROW)) {
@@ -204,116 +333,10 @@ function reversedPlayerOne(x, y, s) {
   playerX = x; // update x and y to the new position
   playerY = y;
 }
-function lawnMower(x, y, s) {
-  // lawnmower body
-  strokeWeight(4 * s);
-  stroke(0);
-  fill(255, 204, 0);
-  rect(x, y, 80 * s, 20 * s, 10 * s);
-
-  // lawnmower wheel
-  strokeWeight(4 * s);
-  stroke(0);
-  fill(61);
-  ellipse(x + 20 * s, y + 20 * s, 20 * s, 20 * s);
-  ellipse(x + 60 * s, y + 20 * s, 20 * s, 20 * s);
-
-  // lawnmower handle
-  strokeWeight(4 * s);
-  stroke(0);
-  line(x + 70 * s, y, x + 100 * s, y - 40 * s);
+function startScreen() {
+  fill(126, 200, 80);
+  rect(0, 0, 800);
 }
-function bush(x, y, s) {
-  fill(0, 120, 0);
-  rect(x, y + 100 * s, 40 * s, 40 * s);
-  rect(x + 40 * s, y + 100 * s, 40 * s, 40 * s);
-  fill(0, 130, 0);
-  rect(x + 80 * s, y + 100 * s, 40 * s, 40 * s);
-  fill(0, 110, 0);
-  rect(x + 120 * s, y + 100 * s, 40 * s, 40 * s);
-  fill(0, 120, 0);
-  rect(x + 160 * s, y + 100 * s, 40 * s, 40 * s);
-  fill(0, 111, 0);
-  rect(x + 20 * s, y + 60 * s, 40 * s, 40 * s);
-  rect(x + 60 * s, y + 60 * s, 40 * s, 40 * s);
-  fill(0, 120, 0);
-  rect(x + 100 * s, y + 60 * s, 40 * s, 40 * s);
-  rect(x + 140 * s, y + 60 * s, 40 * s, 40 * s);
-  fill(0, 130, 0);
-  rect(x + 60 * s, y + 20 * s, 40 * s, 40 * s);
-  rect(x + 100 * s, y + 20 * s, 40 * s, 40 * s);
-  fill(0, 110, 0);
-  rect(x + 70 * s, y + 115 * s, 25 * s, 25 * s);
-  rect(x + 110 * s, y + 115 * s, 25 * s, 25 * s);
-}
-function flowers(x, y, s) {
-  fill(0, 255, 0);
-  noStroke();
-  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
-  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
-  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
-  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
-  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
-  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
-  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
-  fill(255, 0, 0);
-  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
-  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
-  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
-  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
-  fill(255, 255, 0);
-  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
-}
-function flowerYellow(x, y, s) {
-  fill(0, 255, 0);
-  noStroke();
-  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
-  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
-  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
-  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
-  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
-  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
-  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
-  fill(255, 255, 0);
-  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
-  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
-  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
-  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
-  fill(255, 255, 0);
-  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
-}
-function flowerBlue(x, y, s) {
-  fill(0, 255, 0);
-  noStroke();
-  rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
-  rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
-  rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
-  rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
-  rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
-  rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
-  rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
-  fill(0, 0, 255);
-  rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
-  rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
-  rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
-  rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
-  fill(255, 255, 0);
-  rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
-}
-
-// function flowerCollision(playerX, playerY) {
-//   for (let i = 0; i < flowerArray.length; i++) {
-//     let characterCollision = flowerArray[i];
-//     if (
-//       playerX > characterCollision.x &&
-//       playerX < characterCollision.x + characterCollision.width &&
-//       playerY < characterCollision.y &&
-//       playerY + 30 > characterCollision.y
-//     ) {
-//       // Handle collision logic here
-//     }
-//   }
-// }
 function gameScreen() {
   fill(126, 200, 80);
   rect(0, 0, 800);
@@ -342,20 +365,28 @@ function gameScreen() {
   bush(440, 590, 0.4);
   lawnMower(600, 200, 0.7);
   //flowers
-  flowers(x, y, 0.2);
-  flowers(x, y + 300, 0.2);
-  flowers(x + 100, y + 500, 0.2);
+  flowerBrown(x + 370, y + 480, 0.2);
+  flowerPink(x, y, 0.2);
+  flowerBlue(x, y + 300, 0.2);
+  flowerYellow(x + 100, y + 500, 0.2);
   flowers(x + 400, y + 200, 0.2);
 
   playerFlower(playerX, playerY, 0.2);
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
-    fill(255, 255, 255); // Set the fill color for the flowers
+    fill(255, 255, 255,0.3); // Set the fill color for the flowers
     rect(flower.x, flower.y, flower.width, flower.height);
   }
+  fill(0,160,0);
+  rect(90,710,200,80);
+  fill(0,255,0);
+  textSize(20);
+    text("Flower collected: " + flowerCollected, 100, 750);
 }
 function leaderBoardScreen() {
-  rect(100, 100, 10);
+  background(0,0,0);
+  fill(255,255,255);
+  rect(100, 100, 600,600);
 }
 
 // Define the flower objects
@@ -372,8 +403,10 @@ var flower4 = {
   height: 55,
 };
 var flower3 = {
-  x: 100,
-  y: 300,
+  x: 500,
+  y: 600,
+  width:  20,
+  height: 55
 };
 var flower1 = {
   x: 130,
@@ -392,9 +425,8 @@ let flowerArray = [flower1, flower2, flower4, flower, flower3];
 let state = "game";
 function draw() {
   flowerCollision(playerX, playerY);
-
   // Other drawing and rendering logic
-}
+
 
 function flowerCollision(playerX, playerY) {
   for (let i = 0; i < flowerArray.length; i++) {
@@ -406,7 +438,8 @@ function flowerCollision(playerX, playerY) {
       playerY + 40 > characterCollision.y
     ) {
       // Collision detected, you can perform actions here
-      console.log("Collision detected", i);
+      flowerCollected ++;
+      console.log(flowerCollected, i);
     }
   }
 
@@ -416,6 +449,10 @@ function flowerCollision(playerX, playerY) {
     gameScreen();
   } else if (state === "leaderBoard") {
     leaderBoardScreen();
-    playerOne();
   }
+  if (flowerCollected > 10){
+ state = "leaderBoard";
+    console.log("win");
+  }
+}
 }
