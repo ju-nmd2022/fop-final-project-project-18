@@ -121,7 +121,6 @@ function bush(x, y, s) {
   rect(x + 70 * s, y + 115 * s, 25 * s, 25 * s);
   rect(x + 110 * s, y + 115 * s, 25 * s, 25 * s);
 }
-
 function lawnMower(x, y, s) {
   // lawnmower body
   strokeWeight(4 * s);
@@ -337,17 +336,30 @@ function reversedPlayerOne(x, y, s) {
   playerY = y;
 }
 function startScreen() {
-  fill(126, 200, 80);
-  rect(0, 0, 800);
-  fill(255, 255, 255);
-  rect(280, 260, 250, 70);
-  fill(0, 0, 0);
-  text("Welcome to the game of flower picking", 300, 300);
+  background(126, 200, 80);
+  rect(150, 200, 400);
+  text("Welcome to Flower Picker!", 275, 300);
+  text("Your objective is to pick up as many flowers as possible!", 200, 330);
+  text("Click Space in order to start the game", 250, 380);
+  text("Tip use the arrow keys! To move around the character", 230, 420);
+  text("Press Enter to Activate the game and start collecting", 230, 460);
+
+  if (keyIsDown(32)) {
+    state = "Game";
+  }
+  
 }
 function gameScreen() {
-  if (keyIsDown(38)) {
+  if (keyIsDown(13)) {
     isGameActive = true;
+    console.log(isGameActive);
   }
+  if (isGameActive) {
+    move = 15;
+  } else {
+    move = 0;
+  }
+
   fill(126, 200, 80);
   rect(0, 0, 800);
   noStroke();
@@ -406,6 +418,8 @@ function leaderBoardScreen() {
   background(0, 0, 0);
   fill(255, 255, 255);
   rect(100, 100, 600, 600);
+  text("Press enter to go back!", 300, 370);
+  if (keyIsDown(13)) state = "start";
 }
 
 // Define the flower objects
@@ -441,7 +455,7 @@ var flower2 = {
 };
 
 let flowerArray = [flower1, flower2, flower4, flower, flower3];
-let state = "game";
+let state = "start";
 function draw() {
   flowerCollision(playerX, playerY);
   // Other drawing and rendering logic
@@ -465,7 +479,7 @@ function draw() {
 
     if (state === "start") {
       startScreen();
-    } else if (state === "game") {
+    } else if (state === "Game") {
       gameScreen();
     } else if (state === "leaderBoard") {
       leaderBoardScreen();
