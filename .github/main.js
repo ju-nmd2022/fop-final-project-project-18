@@ -337,17 +337,22 @@ function reversedPlayerOne(x, y, s) {
 }
 function startScreen() {
   background(126, 200, 80);
+  fill(255, 255, 255);
   rect(150, 200, 400);
+  fill(0, 0, 0);
   text("Welcome to Flower Picker!", 275, 300);
   text("Your objective is to pick up as many flowers as possible!", 200, 330);
   text("Click Space in order to start the game", 250, 380);
   text("Tip use the arrow keys! To move around the character", 230, 420);
   text("Press Enter to Activate the game and start collecting", 230, 460);
+  fill(255, 255, 255);
 
   if (keyIsDown(32)) {
     state = "Game";
+    playerX = 350;
+    playerY = 350;
+    flowerCollected = 0;
   }
-  
 }
 function gameScreen() {
   if (keyIsDown(13)) {
@@ -359,7 +364,7 @@ function gameScreen() {
   } else {
     move = 0;
   }
-
+  background(126, 200, 80);
   fill(126, 200, 80);
   rect(0, 0, 800);
   noStroke();
@@ -408,18 +413,40 @@ function gameScreen() {
     rect(flower.x, flower.y, flower.width, flower.height);
   }
   //to here
+  push();
   fill(0, 160, 0);
   rect(90, 710, 200, 80);
   fill(0, 255, 0);
   textSize(20);
   text("Flower collected: " + flowerCollected, 100, 750);
+  pop();
+
+  if (flowerCollected === 1) {
+    isGameActive = false;
+    console.log("You won!");
+    push();
+    fill(255, 255, 255);
+    rect(220, 250, 300);
+    fill(0,0,0);
+    text("Nice press Q", 340, 390);
+    pop();
+  }
+  if (keyIsDown(81)) {
+    state = "win";
+  }
 }
-function leaderBoardScreen() {
-  background(0, 0, 0);
+function winScreen() {
+  push();
+  background(126, 200, 80);
   fill(255, 255, 255);
-  rect(100, 100, 600, 600);
-  text("Press enter to go back!", 300, 370);
-  if (keyIsDown(13)) state = "start";
+  rect(200, 200, 350);
+  fill(0, 0, 0);
+  text("Congratulations YOU WON", 300, 350);
+  text("Press enter to go back!", 310, 370);
+  pop();
+  if (keyIsDown(13)) {
+    state = "start";
+  }
 }
 
 // Define the flower objects
@@ -455,7 +482,7 @@ var flower2 = {
 };
 
 let flowerArray = [flower1, flower2, flower4, flower, flower3];
-let state = "start";
+let state = "win";
 function draw() {
   flowerCollision(playerX, playerY);
   // Other drawing and rendering logic
@@ -481,12 +508,8 @@ function draw() {
       startScreen();
     } else if (state === "Game") {
       gameScreen();
-    } else if (state === "leaderBoard") {
-      leaderBoardScreen();
-    }
-    if (flowerCollected > 10) {
-      state = "leaderBoard";
-      console.log("win");
+    } else if (state === "win") {
+      winScreen();
     }
   }
 }
