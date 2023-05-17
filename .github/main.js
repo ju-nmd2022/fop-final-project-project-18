@@ -5,7 +5,8 @@ let playerX = 350;
 let playerY = 350;
 let move = 15;
 let flowerCollected = 0;
-let mowerX = 600; // Initial x-coordinate of the lawnmower
+let mowerX = 600;
+let gameIsActive = false;
 
 function flowers(x, y, s) {
   fill(0, 255, 0);
@@ -384,7 +385,6 @@ function gameScreen() {
   flowerBlue(x, y + 300, 0.2);
   flowerYellow(x + 100, y + 500, 0.2);
   flowers(x + 400, y + 200, 0.2);
-  
 
   playerFlower(playerX, playerY, 0.2);
   //Got help from oliver and charlie on this code!
@@ -445,6 +445,7 @@ function draw() {
   // Other drawing and rendering logic
 
   function flowerCollision(playerX, playerY) {
+    //help from Oliver and Charlie
     for (let i = 0; i < flowerArray.length; i++) {
       let characterCollision = flowerArray[i];
       if (
@@ -452,6 +453,7 @@ function draw() {
         playerX < characterCollision.x + characterCollision.width &&
         playerY < characterCollision.y &&
         playerY + 40 > characterCollision.y
+        //To here
       ) {
         // Collision detected, you can perform actions here
         flowerCollected++;
