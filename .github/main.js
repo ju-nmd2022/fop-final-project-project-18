@@ -152,8 +152,6 @@ function playerFlower(x, y, s) {
   if (keyIsDown(DOWN_ARROW)) {
     y += move;
   }
-  console.log(x);
-  console.log(y);
 
   push();
   strokeWeight(0);
@@ -372,7 +370,6 @@ function startScreen() {
 function gameScreen() {
   if (keyIsDown(13)) {
     isGameActive = true;
-    console.log(isGameActive);
   }
   if (isGameActive) {
     move = 15;
