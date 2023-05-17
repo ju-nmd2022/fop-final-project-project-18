@@ -6,7 +6,7 @@ let playerY = 350;
 let move = 15;
 let flowerCollected = 0;
 let mowerX = 600;
-let gameIsActive = false;
+let isGameActive = false;
 
 function flowers(x, y, s) {
   fill(0, 255, 0);
@@ -345,6 +345,9 @@ function startScreen() {
   text("Welcome to the game of flower picking", 300, 300);
 }
 function gameScreen() {
+  if (keyIsDown(38)) {
+    isGameActive = true;
+  }
   fill(126, 200, 80);
   rect(0, 0, 800);
   noStroke();
@@ -378,7 +381,6 @@ function gameScreen() {
   //   mowerX -= 2; // Move left
   // } else if (mowerX <= 100) {
   //   mowerX += 3; // Move right
-
   // }
   flowerBrown(x + 370, y + 480, 0.2);
   flowerPink(x, y, 0.2);
