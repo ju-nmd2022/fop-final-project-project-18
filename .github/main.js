@@ -557,7 +557,6 @@ function draw() {
         playerY + 50 > flower.y
       ) {
         // Collision detected, perform actions here
-        flower.pickedUp = true;
         flowerCollected++;
         console.log(flowerCollected, i);
 
