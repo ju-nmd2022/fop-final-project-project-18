@@ -465,68 +465,68 @@ function winScreen() {
 }
 // Define the flower objects
 let flower0 = {
-  x: 155,
-  y: 120,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower1 = {
-  x: 130,
-  y: 420,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower2 = {
-  x: 620,
-  y: 327,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower3 = {
-  x: 560,
-  y: 600,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower4 = {
-  x: 245,
-  y: 620,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower5 = {
-  x: 420,
-  y: 127,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower6 = {
-  x: 220,
-  y: 227,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower7 = {
-  x: 520,
-  y: 227,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower8 = {
-  x: 120,
-  y: 27,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower9 = {
-  x: 320,
-  y: 427,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
 let flower10 = {
-  x: 420,
-  y: 527,
+  x: Math.random() * 650,
+  y: Math.random() * 650,
   width: 30,
   height: 65,
 };
@@ -544,7 +544,7 @@ let flowerArray = [
   flower9,
   flower10,
 ];
-let state = "start";
+let state = "Game";
 function draw() {
   flowerCollision(playerX, playerY);
   function flowerCollision(playerX, playerY) {
