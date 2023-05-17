@@ -152,6 +152,8 @@ function playerFlower(x, y, s) {
   if (keyIsDown(DOWN_ARROW)) {
     y += move;
   }
+  console.log(x);
+  console.log(y);
 
   push();
   strokeWeight(0);
@@ -341,7 +343,7 @@ function startScreen() {
   rect(150, 200, 400);
   fill(0, 0, 0);
   text("Welcome to Flower Picker!", 275, 300);
-  text("Your objective is to pick up as many flowers as possible!", 200, 330);
+  text("Your objective is to pick up 10 flowers!", 250, 330);
   text("Click Space in order to start the game", 250, 380);
   text("Tip use the arrow keys! To move around the character", 230, 420);
   text("Press Enter to Activate the game and start collecting", 230, 460);
@@ -352,6 +354,19 @@ function startScreen() {
     playerX = 350;
     playerY = 350;
     flowerCollected = 0;
+    flowerArray = [
+      flower1,
+      flower2,
+      flower4,
+      flower0,
+      flower3,
+      flower5,
+      flower6,
+      flower7,
+      flower8,
+      flower9,
+      flower10,
+    ];
   }
 }
 function gameScreen() {
@@ -399,18 +414,18 @@ function gameScreen() {
   // } else if (mowerX <= 100) {
   //   mowerX += 3; // Move right
   // }
-  flowerBrown(x + 370, y + 480, 0.2);
-  flowerPink(x, y, 0.2);
-  flowerBlue(x, y + 300, 0.2);
-  flowerYellow(x + 100, y + 500, 0.2);
-  flowers(x + 400, y + 200, 0.2);
+  // flowerBrown(x + 370, y + 480, 0.2);
+  // flowerPink(x, y, 0.2);
+  // flowerBlue(x, y + 300, 0.2);
+  // flowerYellow(x + 100, y + 500, 0.2);
+  // flowers(x + 400, y + 200, 0.2);
 
   playerFlower(playerX, playerY, 0.2);
   //Got help from oliver and charlie on this code!
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
-    fill(255, 255, 255, 0.3); // Set the fill color for the flowers
-    rect(flower.x, flower.y, flower.width, flower.height);
+    fill(255, 255, 255);
+    flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
   }
   //to here
   push();
@@ -421,13 +436,13 @@ function gameScreen() {
   text("Flower collected: " + flowerCollected, 100, 750);
   pop();
 
-  if (flowerCollected === 1) {
+  if (flowerCollected === 10) {
     isGameActive = false;
     console.log("You won!");
     push();
     fill(255, 255, 255);
     rect(220, 250, 300);
-    fill(0,0,0);
+    fill(0, 0, 0);
     text("Nice press Q", 340, 390);
     pop();
   }
@@ -448,68 +463,136 @@ function winScreen() {
     state = "start";
   }
 }
-
 // Define the flower objects
-var flower = {
-  x: 130,
+let flower0 = {
+  x: 155,
   y: 120,
-  width: 20,
-  height: 55,
+  width: 30,
+  height: 65,
 };
-var flower4 = {
-  x: 230,
-  y: 620,
-  width: 20,
-  height: 55,
-};
-var flower3 = {
-  x: 500,
-  y: 600,
-  width: 20,
-  height: 55,
-};
-var flower1 = {
+let flower1 = {
   x: 130,
   y: 420,
-  width: 20,
-  height: 55,
+  width: 30,
+  height: 65,
 };
-var flower2 = {
-  x: 530,
+let flower2 = {
+  x: 620,
   y: 327,
-  width: 20,
-  height: 50,
+  width: 30,
+  height: 65,
+};
+let flower3 = {
+  x: 560,
+  y: 600,
+  width: 30,
+  height: 65,
+};
+let flower4 = {
+  x: 245,
+  y: 620,
+  width: 30,
+  height: 65,
+};
+let flower5 = {
+  x: 420,
+  y: 127,
+  width: 30,
+  height: 65,
+};
+let flower6 = {
+  x: 220,
+  y: 227,
+  width: 30,
+  height: 65,
+};
+let flower7 = {
+  x: 520,
+  y: 227,
+  width: 30,
+  height: 65,
+};
+let flower8 = {
+  x: 120,
+  y: 27,
+  width: 30,
+  height: 65,
+};
+let flower9 = {
+  x: 320,
+  y: 427,
+  width: 30,
+  height: 65,
+};
+let flower10 = {
+  x: 420,
+  y: 527,
+  width: 30,
+  height: 65,
 };
 
-let flowerArray = [flower1, flower2, flower4, flower, flower3];
-let state = "win";
+let flowerArray = [
+  flower1,
+  flower2,
+  flower4,
+  flower0,
+  flower3,
+  flower5,
+  flower6,
+  flower7,
+  flower8,
+  flower9,
+  flower10,
+];
+let state = "start";
 function draw() {
   flowerCollision(playerX, playerY);
-  // Other drawing and rendering logic
-
   function flowerCollision(playerX, playerY) {
-    //help from Oliver and Charlie
     for (let i = 0; i < flowerArray.length; i++) {
-      let characterCollision = flowerArray[i];
+      let flower = flowerArray[i];
       if (
-        playerX > characterCollision.x &&
-        playerX < characterCollision.x + characterCollision.width &&
-        playerY < characterCollision.y &&
-        playerY + 40 > characterCollision.y
-        //To here
+        playerX > flower.x &&
+        playerX < flower.x + flower.width &&
+        playerY < flower.y &&
+        playerY + 50 > flower.y
       ) {
-        // Collision detected, you can perform actions here
+        // Collision detected, perform actions here
+        flower.pickedUp = true;
         flowerCollected++;
         console.log(flowerCollected, i);
+
+        // Remove the flower from the array
+        flowerArray.splice(i, 1);
+        break;
       }
     }
+  }
 
-    if (state === "start") {
-      startScreen();
-    } else if (state === "Game") {
-      gameScreen();
-    } else if (state === "win") {
-      winScreen();
-    }
+  // Other drawing and rendering logic
+  //old code
+  // function flowerCollision(playerX, playerY) {
+  //   //help from Oliver and Charlie
+  //   for (let i = 0; i < flowerArray.length; i++) {
+  //     let characterCollision = flowerArray[i];
+  //     if (
+  //       playerX > characterCollision.x &&
+  //       playerX < characterCollision.x + characterCollision.width &&
+  //       playerY < characterCollision.y &&
+  //       playerY + 40 > characterCollision.y
+  //       //To here
+  //     ) {
+  //       // Collision detected, you can perform actions here
+  //       flowerArray[i].pickedUp = true;
+  //       // flowerArray[i].drawFlower();
+  //       flowerCollected++;
+  //       console.log(flowerCollected, i);
+  //     }
+  //   }
+  if (state === "start") {
+    startScreen();
+  } else if (state === "Game") {
+    gameScreen();
+  } else if (state === "win") {
+    winScreen();
   }
 }
