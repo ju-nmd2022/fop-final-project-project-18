@@ -457,6 +457,7 @@ function gameScreen() {
     rect(220, 250, 300);
     fill(0, 0, 0);
     text("Well done press W", 330, 390);
+    text("You anvanced to the next level", 300, 430);
     pop();
   }
   //flower collected
@@ -468,16 +469,57 @@ function gameScreen() {
     playerY = 350;
     flowerCollected = 0;
     flowerArray = [
-      flower1,
-      flower2,
-      flower4,
-      flower0,
-      flower3,
-      flower5,
-      flower6,
-      flower7,
-      flower8,
-      flower9,
+      {
+        x: Math.random() * 650,
+        y: flower0.y,
+        width: flower0.width,
+        height: flower0.height
+      },  {
+        x: Math.random() * 650,
+        y: flower1.y,
+        width: flower1.width,
+        height: flower1.height
+      },  {
+        x: Math.random() * 650,
+        y: flower2.y,
+        width: flower2.width,
+        height: flower2.height
+      },  {
+        x: Math.random() * 650,
+        y: flower3.y,
+        width: flower3.width,
+        height: flower3.height
+      },  {
+        x: Math.random() * 650,
+        y: flower4.y,
+        width: flower4.width,
+        height: flower4.height
+      },  {
+        x: Math.random() * 650,
+        y: flower5.y,
+        width: flower5.width,
+        height: flower5.height
+      },  {
+        x: Math.random() * 650,
+        y: flower6.y,
+        width: flower6.width,
+        height: flower6.height
+      },  {
+        x: Math.random() * 650,
+        y: flower7.y,
+        width: flower7.width,
+        height: flower7.height
+      },  {
+        x: Math.random() * 650,
+        y: flower8.y,
+        width: flower8.width,
+        height: flower8.height
+      },  {
+        x: Math.random() * 650,
+        y: flower9.y,
+        width: flower9.width,
+        height: flower9.height
+      },
     ];
   }
 }
@@ -564,6 +606,7 @@ function levelScreen2() {
     rect(220, 250, 300);
     fill(0, 0, 0);
     text("Nice press E", 340, 390);
+    text("You anvanced to the next level", 300, 430);
     pop();
   }
   //flower collected
@@ -575,16 +618,57 @@ function levelScreen2() {
     playerY = 350;
     flowerCollected = 0;
     flowerArray = [
-      flower1,
-      flower2,
-      flower4,
-      flower0,
-      flower3,
-      flower5,
-      flower6,
-      flower7,
-      flower8,
-      flower9,
+      {
+        x: Math.random() * 650,
+        y: flower0.y,
+        width: flower0.width,
+        height: flower0.height
+      },  {
+        x: Math.random() * 650,
+        y: flower1.y,
+        width: flower1.width,
+        height: flower1.height
+      },  {
+        x: Math.random() * 650,
+        y: flower2.y,
+        width: flower2.width,
+        height: flower2.height
+      },  {
+        x: Math.random() * 650,
+        y: flower3.y,
+        width: flower3.width,
+        height: flower3.height
+      },  {
+        x: Math.random() * 650,
+        y: flower4.y,
+        width: flower4.width,
+        height: flower4.height
+      },  {
+        x: Math.random() * 650,
+        y: flower5.y,
+        width: flower5.width,
+        height: flower5.height
+      },  {
+        x: Math.random() * 650,
+        y: flower6.y,
+        width: flower6.width,
+        height: flower6.height
+      },  {
+        x: Math.random() * 650,
+        y: flower7.y,
+        width: flower7.width,
+        height: flower7.height
+      },  {
+        x: Math.random() * 650,
+        y: flower8.y,
+        width: flower8.width,
+        height: flower8.height
+      },  {
+        x: Math.random() * 650,
+        y: flower9.y,
+        width: flower9.width,
+        height: flower9.height
+      },
     ];
   }
 }
@@ -670,6 +754,7 @@ function levelScreen3() {
     rect(220, 250, 300);
     fill(0, 0, 0);
     text("Well done press Q", 330, 390);
+    text("You cleared all the levels well done!", 280, 430);
     pop();
   }
   //flower collected
@@ -687,6 +772,17 @@ function winScreen() {
   text("Press enter to go back!", 310, 370);
   pop();
   if (keyIsDown(13)) {
+    state = "start";
+  }
+}
+function loseScreen() {
+  background(255, 0, 0);
+  fill(255, 255, 255);
+  rect(200, 200, 400);
+  fill(0, 0, 0);
+  text("OH NO YOU LOST", 350, 300);
+  text("Press R to get to the start again!", 320, 350);
+  if (keyIsDown(82)) {
     state = "start";
   }
 }
@@ -796,5 +892,7 @@ function draw() {
     levelScreen3();
   } else if (state === "win") {
     winScreen();
+  } else if (state === "lose") {
+    loseScreen();
   }
 }
