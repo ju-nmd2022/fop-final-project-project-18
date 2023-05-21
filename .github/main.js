@@ -355,28 +355,28 @@ function startScreen() {
   text("Press Enter to Activate the game and start collecting", 230, 460);
   fill(255, 255, 255);
 
-  bush(200,120,0.5);
-  bush(400,100,0.5);
-  bush(200,600,0.5);
-  bush(400,600,0.5);
-  bush(40,200,0.5);
-  bush(600,200,0.5);
-  bush(40,400,0.5);
-  bush(600,600,0.5);
-  playerFlower(startPlayerX,450,0.8);
+  bush(200, 120, 0.5);
+  bush(400, 100, 0.5);
+  bush(200, 600, 0.5);
+  bush(400, 600, 0.5);
+  bush(40, 200, 0.5);
+  bush(600, 200, 0.5);
+  bush(40, 400, 0.5);
+  bush(600, 600, 0.5);
+  playerFlower(startPlayerX, 450, 0.8);
   startPlayerX = startPlayerX + 5;
-  if (startPlayerX > 800){
-startPlayerX = -200;
+  if (startPlayerX > 800) {
+    startPlayerX = -200;
   }
-  flowers(300,380,1.0);
-  fill(0,0,0);
+  flowers(300, 380, 1.0);
+  fill(0, 0, 0);
   push();
   textSize(7);
-  text("Programmed by Elias",100,800);
-  flowerPink(380,50,0.5);
-  flowerBrown(100,100,0.4);
-  flowerYellow(500,200,0.7);
-  flowerBlue(-60,200,0.7);
+  text("Programmed by Elias", 100, 800);
+  flowerPink(380, 50, 0.5);
+  flowerBrown(100, 100, 0.4);
+  flowerYellow(500, 200, 0.7);
+  flowerBlue(-60, 200, 0.7);
   pop();
   if (keyIsDown(32)) {
     state = "Game";
@@ -497,52 +497,61 @@ function gameScreen() {
         x: Math.random() * 650,
         y: flower0.y,
         width: flower0.width,
-        height: flower0.height
-      },  {
+        height: flower0.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower1.y,
         width: flower1.width,
-        height: flower1.height
-      },  {
+        height: flower1.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower2.y,
         width: flower2.width,
-        height: flower2.height
-      },  {
+        height: flower2.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower3.y,
         width: flower3.width,
-        height: flower3.height
-      },  {
+        height: flower3.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower4.y,
         width: flower4.width,
-        height: flower4.height
-      },  {
+        height: flower4.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower5.y,
         width: flower5.width,
-        height: flower5.height
-      },  {
+        height: flower5.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower6.y,
         width: flower6.width,
-        height: flower6.height
-      },  {
+        height: flower6.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower7.y,
         width: flower7.width,
-        height: flower7.height
-      },  {
+        height: flower7.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower8.y,
         width: flower8.width,
-        height: flower8.height
-      },  {
+        height: flower8.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower9.y,
         width: flower9.width,
-        height: flower9.height
+        height: flower9.height,
       },
     ];
   }
@@ -646,52 +655,61 @@ function levelScreen2() {
         x: Math.random() * 650,
         y: flower0.y,
         width: flower0.width,
-        height: flower0.height
-      },  {
+        height: flower0.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower1.y,
         width: flower1.width,
-        height: flower1.height
-      },  {
+        height: flower1.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower2.y,
         width: flower2.width,
-        height: flower2.height
-      },  {
+        height: flower2.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower3.y,
         width: flower3.width,
-        height: flower3.height
-      },  {
+        height: flower3.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower4.y,
         width: flower4.width,
-        height: flower4.height
-      },  {
+        height: flower4.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower5.y,
         width: flower5.width,
-        height: flower5.height
-      },  {
+        height: flower5.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower6.y,
         width: flower6.width,
-        height: flower6.height
-      },  {
+        height: flower6.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower7.y,
         width: flower7.width,
-        height: flower7.height
-      },  {
+        height: flower7.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower8.y,
         width: flower8.width,
-        height: flower8.height
-      },  {
+        height: flower8.height,
+      },
+      {
         x: Math.random() * 650,
         y: flower9.y,
         width: flower9.width,
-        height: flower9.height
+        height: flower9.height,
       },
     ];
   }
