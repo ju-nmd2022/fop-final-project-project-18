@@ -4,6 +4,7 @@ let y = 100;
 let s = 1.0;
 let playerX = 350;
 let playerY = 350;
+let startPlayerX = 50;
 let move = 15;
 let flowerCollected = 0;
 let mowerX = 600;
@@ -354,6 +355,29 @@ function startScreen() {
   text("Press Enter to Activate the game and start collecting", 230, 460);
   fill(255, 255, 255);
 
+  bush(200,120,0.5);
+  bush(400,100,0.5);
+  bush(200,600,0.5);
+  bush(400,600,0.5);
+  bush(40,200,0.5);
+  bush(600,200,0.5);
+  bush(40,400,0.5);
+  bush(600,600,0.5);
+  playerFlower(startPlayerX,450,0.8);
+  startPlayerX = startPlayerX + 5;
+  if (startPlayerX > 800){
+startPlayerX = -200;
+  }
+  flowers(300,380,1.0);
+  fill(0,0,0);
+  push();
+  textSize(7);
+  text("Programmed by Elias",100,800);
+  flowerPink(380,50,0.5);
+  flowerBrown(100,100,0.4);
+  flowerYellow(500,200,0.7);
+  flowerBlue(-60,200,0.7);
+  pop();
   if (keyIsDown(32)) {
     state = "Game";
     timer = 15;
