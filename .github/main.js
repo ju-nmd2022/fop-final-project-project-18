@@ -8,6 +8,11 @@ let move = 15;
 let flowerCollected = 0;
 let mowerX = 600;
 let isGameActive = false;
+//timer help: https://editor.p5js.org/marynotari/sketches/S1T2ZTMp-
+let timer = 15;
+let timer2 = 10;
+let timer3 = 6;
+let timerActive = false;
 
 function flowers(x, y, s) {
   fill(0, 255, 0);
@@ -343,6 +348,7 @@ function startScreen() {
   fill(0, 0, 0);
   text("Welcome to Flower Picker!", 275, 300);
   text("Your objective is to pick up 10 flowers!", 250, 330);
+  text("But be careful so that the timer does not catch you!", 220, 355);
   text("Click Space in order to start the game", 250, 380);
   text("Tip use the arrow keys! To move around the character", 230, 420);
   text("Press Enter to Activate the game and start collecting", 230, 460);
@@ -350,6 +356,8 @@ function startScreen() {
 
   if (keyIsDown(32)) {
     state = "Game";
+    timer = 15;
+    timerActive = false;
     playerX = 350;
     playerY = 350;
     flowerCollected = 0;
@@ -364,13 +372,14 @@ function startScreen() {
       flower7,
       flower8,
       flower9,
-      flower10,
     ];
   }
 }
 function gameScreen() {
+  //start the game
   if (keyIsDown(13)) {
     isGameActive = true;
+    timerActive = true;
   }
   if (isGameActive) {
     move = 15;
@@ -404,20 +413,6 @@ function gameScreen() {
   bush(100, 550, 0.7);
   bush(440, 590, 0.4);
   //flowers
-
-  // Call the lawnmower function with the updated x-coordinate
-  // lawnMower(mowerX, 200, 0.7);
-  // if (mowerX >= 100) {
-  //   mowerX -= 2; // Move left
-  // } else if (mowerX <= 100) {
-  //   mowerX += 3; // Move right
-  // }
-  // flowerBrown(x + 370, y + 480, 0.2);
-  // flowerPink(x, y, 0.2);
-  // flowerBlue(x, y + 300, 0.2);
-  // flowerYellow(x + 100, y + 500, 0.2);
-  // flowers(x + 400, y + 200, 0.2);
-
   playerFlower(playerX, playerY, 0.2);
   //Got help from oliver and charlie on this code!
   for (let i = 0; i < flowerArray.length; i++) {
@@ -426,6 +421,7 @@ function gameScreen() {
     flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
   }
   //to here
+  //flower collected:
   push();
   fill(0, 160, 0);
   rect(90, 710, 200, 80);
@@ -433,17 +429,250 @@ function gameScreen() {
   textSize(20);
   text("Flower collected: " + flowerCollected, 100, 750);
   pop();
-
+  //timer:
+  push();
+  fill(0, 0, 0);
+  text("Time to go:", 10, 50);
+  textSize(80);
+  text(timer, 24, 120);
+  fill(255, 255, 0);
+  text(timer, 20, 120);
+  pop();
+  if (timerActive && frameCount % 40 == 0 && timer > 0) {
+    // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer--;
+  }
+  if (timer == 0) {
+    isGameActive = false;
+  }
+  //timer
+  //flower collected
   if (flowerCollected === 10) {
     isGameActive = false;
+    timerActive = false;
+
+    console.log("level 1 complete!");
+    push();
+    fill(255, 255, 255);
+    rect(220, 250, 300);
+    fill(0, 0, 0);
+    text("Well done press W", 330, 390);
+    pop();
+  }
+  //flower collected
+  if (keyIsDown(87)) {
+    state = "level2";
+    timer = 10;
+    timerActive = false;
+    playerX = 350;
+    playerY = 350;
+    flowerCollected = 0;
+    flowerArray = [
+      flower1,
+      flower2,
+      flower4,
+      flower0,
+      flower3,
+      flower5,
+      flower6,
+      flower7,
+      flower8,
+      flower9,
+    ];
+  }
+}
+function levelScreen2() {
+  //start the game
+  if (keyIsDown(13)) {
+    isGameActive = true;
+    timerActive = true;
+  }
+  if (isGameActive) {
+    move = 15;
+  } else {
+    move = 0;
+  }
+  background(126, 200, 80);
+  fill(126, 200, 80);
+  rect(0, 0, 800);
+  noStroke();
+  fill(147, 179, 130);
+  //the right path
+  rect(400, 200, 190, 40);
+  rect(400, 350, 190, 40);
+  rect(400, 500, 190, 40);
+  //path in the middle
+  rect(340, 0, 60, 800);
+  //the left path
+  rect(150, 200, 190, 40);
+  rect(150, 350, 190, 40);
+  rect(150, 500, 190, 40);
+  //all the bushes: (in order with Y-value)
+  bush(200, 100, 0.4);
+  bush(400, 100, 0.5);
+  bush(500, 200, 0.4);
+  bush(100, 300, 0.4);
+  bush(500, 300, 0.3);
+  bush(260, 300, 0.3);
+  bush(250, 400, 0.3);
+  bush(450, 400, 0.4);
+  bush(100, 550, 0.7);
+  bush(440, 590, 0.4);
+  //flowers
+  playerFlower(playerX, playerY, 0.2);
+  //Got help from oliver and charlie on this code!
+  for (let i = 0; i < flowerArray.length; i++) {
+    let flower = flowerArray[i];
+    fill(255, 255, 255);
+    flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
+  }
+  //to here
+  //flower collected:
+  push();
+  fill(0, 160, 0);
+  rect(90, 710, 200, 80);
+  fill(0, 255, 0);
+  textSize(20);
+  text("Flower collected: " + flowerCollected, 100, 750);
+  pop();
+  push();
+  //timer:
+
+  fill(0, 0, 0);
+  text("Time to go:", 10, 50);
+  textSize(80);
+  text(timer2, 24, 120);
+  fill(255, 255, 0);
+  text(timer2, 20, 120);
+  pop();
+  if (timerActive && frameCount % 40 == 0 && timer2 > 0) {
+    // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer2--;
+  }
+  if (timer2 == 0) {
+    isGameActive = false;
+  }
+  //timer
+  //flower collected
+  if (flowerCollected === 10) {
+    isGameActive = false;
+    timerActive = false;
+
+    console.log("Level 2 complete!");
+    push();
+    fill(255, 255, 255);
+    rect(220, 250, 300);
+    fill(0, 0, 0);
+    text("Nice press E", 340, 390);
+    pop();
+  }
+  //flower collected
+  if (keyIsDown(69)) {
+    state = "level3";
+    timer = 5;
+    timerActive = false;
+    playerX = 350;
+    playerY = 350;
+    flowerCollected = 0;
+    flowerArray = [
+      flower1,
+      flower2,
+      flower4,
+      flower0,
+      flower3,
+      flower5,
+      flower6,
+      flower7,
+      flower8,
+      flower9,
+    ];
+  }
+}
+function levelScreen3() {
+  //start the game
+  if (keyIsDown(13)) {
+    isGameActive = true;
+    timerActive = true;
+  }
+  if (isGameActive) {
+    move = 15;
+  } else {
+    move = 0;
+  }
+  background(126, 200, 80);
+  fill(126, 200, 80);
+  rect(0, 0, 800);
+  noStroke();
+  fill(147, 179, 130);
+  //the right path
+  rect(400, 200, 190, 40);
+  rect(400, 350, 190, 40);
+  rect(400, 500, 190, 40);
+  //path in the middle
+  rect(340, 0, 60, 800);
+  //the left path
+  rect(150, 200, 190, 40);
+  rect(150, 350, 190, 40);
+  rect(150, 500, 190, 40);
+  //all the bushes: (in order with Y-value)
+  bush(200, 100, 0.4);
+  bush(400, 100, 0.5);
+  bush(500, 200, 0.4);
+  bush(100, 300, 0.4);
+  bush(500, 300, 0.3);
+  bush(260, 300, 0.3);
+  bush(250, 400, 0.3);
+  bush(450, 400, 0.4);
+  bush(100, 550, 0.7);
+  bush(440, 590, 0.4);
+  //flowers
+  playerFlower(playerX, playerY, 0.2);
+  //Got help from oliver and charlie on this code!
+  for (let i = 0; i < flowerArray.length; i++) {
+    let flower = flowerArray[i];
+    fill(255, 255, 255);
+    flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
+  }
+  //to here
+  //flower collected:
+  push();
+  fill(0, 160, 0);
+  rect(90, 710, 200, 80);
+  fill(0, 255, 0);
+  textSize(20);
+  text("Flower collected: " + flowerCollected, 100, 750);
+  pop();
+  //timer:
+  push();
+  fill(0, 0, 0);
+  text("Time to go:", 10, 50);
+  textSize(80);
+  text(timer3, 24, 120);
+  fill(255, 255, 0);
+  text(timer3, 20, 120);
+  pop();
+  if (timerActive && frameCount % 40 == 0 && timer3 > 0) {
+    // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer3--;
+  }
+  if (timer3 == 0) {
+    isGameActive = false;
+  }
+  //timer
+  //flower collected
+  if (flowerCollected === 10) {
+    isGameActive = false;
+    timerActive = false;
+
     console.log("You won!");
     push();
     fill(255, 255, 255);
     rect(220, 250, 300);
     fill(0, 0, 0);
-    text("Nice press Q", 340, 390);
+    text("Well done press Q", 330, 390);
     pop();
   }
+  //flower collected
   if (keyIsDown(81)) {
     state = "win";
   }
@@ -461,7 +690,7 @@ function winScreen() {
     state = "start";
   }
 }
-// Define the flower objects
+// flowers as objects
 let flower0 = {
   x: Math.random() * 650,
   y: Math.random() * 650,
@@ -522,13 +751,6 @@ let flower9 = {
   width: 30,
   height: 65,
 };
-let flower10 = {
-  x: Math.random() * 650,
-  y: Math.random() * 650,
-  width: 30,
-  height: 65,
-};
-
 let flowerArray = [
   flower1,
   flower2,
@@ -540,11 +762,9 @@ let flowerArray = [
   flower7,
   flower8,
   flower9,
-  flower10,
 ];
 let state = "start";
 function draw() {
-
   // This is for the collision
   flowerCollision(playerX, playerY);
   function flowerCollision(playerX, playerY) {
@@ -570,6 +790,10 @@ function draw() {
     startScreen();
   } else if (state === "Game") {
     gameScreen();
+  } else if (state === "level2") {
+    levelScreen2();
+  } else if (state === "level3") {
+    levelScreen3();
   } else if (state === "win") {
     winScreen();
   }
