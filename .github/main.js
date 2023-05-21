@@ -1,3 +1,4 @@
+//all of the let:
 let x = 100;
 let y = 100;
 let s = 1.0;
@@ -541,8 +542,10 @@ let flowerArray = [
   flower9,
   flower10,
 ];
-let state = "Game";
+let state = "start";
 function draw() {
+
+  // This is for the collision
   flowerCollision(playerX, playerY);
   function flowerCollision(playerX, playerY) {
     for (let i = 0; i < flowerArray.length; i++) {
@@ -563,27 +566,6 @@ function draw() {
       }
     }
   }
-
-  // Other drawing and rendering logic
-  //old code
-  // function flowerCollision(playerX, playerY) {
-  //   //help from Oliver and Charlie
-  //   for (let i = 0; i < flowerArray.length; i++) {
-  //     let characterCollision = flowerArray[i];
-  //     if (
-  //       playerX > characterCollision.x &&
-  //       playerX < characterCollision.x + characterCollision.width &&
-  //       playerY < characterCollision.y &&
-  //       playerY + 40 > characterCollision.y
-  //       //To here
-  //     ) {
-  //       // Collision detected, you can perform actions here
-  //       flowerArray[i].pickedUp = true;
-  //       // flowerArray[i].drawFlower();
-  //       flowerCollected++;
-  //       console.log(flowerCollected, i);
-  //     }
-  //   }
   if (state === "start") {
     startScreen();
   } else if (state === "Game") {
