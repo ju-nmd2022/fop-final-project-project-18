@@ -975,7 +975,7 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "lose";
+let state = "start";
 function draw() {
   // This is for the collision
   flowerCollision(playerX, playerY);
