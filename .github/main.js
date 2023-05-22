@@ -815,8 +815,8 @@ function winScreen() {
   rect(365, 360, 20, 50);
   //hair
   fill(0, 0, 0);
-  rect(190, 200, 10, 160);
-  rect(550, 200, 10, 160);
+  rect(200, 200, 3, 120);
+  rect(547, 200, 3, 120);
   //white eye
   fill(255, 255, 255);
   rect(240, 280, 50, 50);
@@ -845,8 +845,13 @@ function winScreen() {
   rect(200, 160, 150, 40);
   //crown
   fill(0, 0, 0);
-  text("Congratulations you are the Flower Picker King!", 250, 650);
-  text("Press enter to go back!", 310, 670);
+  textSize(30);
+  text("Congratulations you are the Flower Picker King!", 50, 600);
+  text("Press enter to go back!", 220, 670);
+  flowerPink(480, 300, 0.7);
+  flowerYellow(-0, 340, 0.5);
+  flowers(-90, 50, 0.8);
+  flowerBrown(420, 1, 0.9);
   pop();
   if (keyIsDown(13)) {
     state = "start";
@@ -854,11 +859,42 @@ function winScreen() {
 }
 function loseScreen() {
   background(255, 0, 0);
-  fill(255, 255, 255);
-  rect(200, 200, 400);
+  push();
+  noStroke();
+  //head
+  fill(217, 179, 130);
+  rect(200, 200, 350);
+  fill(217, 160, 130);
+  rect(365, 360, 20, 50);
+  //hair
   fill(0, 0, 0);
-  text("OH NO YOU LOST", 350, 300);
-  text("Press R to get to the start again!", 320, 350);
+  rect(200, 200, 3, 120);
+  rect(547, 200, 3, 120);
+  rect(200, 200, 350, 30);
+  rect(250, 180, 200, 50);
+  rect(330, 150, 200, 80);
+  //white eye
+  fill(255, 255, 255);
+  rect(240, 280, 50, 50);
+  rect(460, 280, 50, 50);
+  //black eye
+  fill(0, 0, 0);
+  rect(290, 280, 50, 50);
+  rect(410, 280, 50, 50);
+  //mouth
+  fill(255, 179, 179);
+  rect(330, 440, 90, 30);
+  //tear
+  fill(0, 0, 205);
+  rect(300, 336, 40, 40);
+  rect(300, 386, 40, 40);
+  pop();
+  fill(0, 0, 0);
+  push();
+  textSize(30);
+  text("OH NO YOU LOST", 270, 700);
+  text("Press R to get to the start again!", 190, 750);
+  pop();
   if (keyIsDown(82)) {
     state = "start";
   }
@@ -936,7 +972,7 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "win";
+let state = "lose";
 function draw() {
   // This is for the collision
   flowerCollision(playerX, playerY);
