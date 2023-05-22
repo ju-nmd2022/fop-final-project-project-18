@@ -468,6 +468,7 @@ function gameScreen() {
   }
   if (timer == 0) {
     isGameActive = false;
+    state = "lose";
   }
   //timer
   //flower collected
@@ -626,6 +627,7 @@ function levelScreen2() {
   }
   if (timer2 == 0) {
     isGameActive = false;
+    state = "lose";
   }
   //timer
   //flower collected
@@ -783,6 +785,7 @@ function levelScreen3() {
   }
   if (timer3 == 0) {
     isGameActive = false;
+    state = "lose";
   }
   //timer
   //flower collected
