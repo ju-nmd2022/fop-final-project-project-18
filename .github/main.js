@@ -807,11 +807,46 @@ function levelScreen3() {
 function winScreen() {
   push();
   background(126, 200, 80);
-  fill(255, 255, 255);
+  noStroke();
+  //head
+  fill(217, 179, 130);
   rect(200, 200, 350);
+  fill(217, 160, 130);
+  rect(365, 360, 20, 50);
+  //hair
   fill(0, 0, 0);
-  text("Congratulations YOU WON", 300, 350);
-  text("Press enter to go back!", 310, 370);
+  rect(190, 200, 10, 160);
+  rect(550, 200, 10, 160);
+  //white eye
+  fill(255, 255, 255);
+  rect(240, 280, 50, 50);
+  rect(460, 280, 50, 50);
+  //black eye
+  fill(0, 0, 0);
+  rect(290, 280, 50, 50);
+  rect(410, 280, 50, 50);
+  //mouth
+  fill(255, 179, 179);
+  rect(330, 440, 90, 30);
+
+  //crown
+  fill(255, 215, 0);
+  rect(260, 140, 230, 20);
+  rect(280, 110, 30, 30);
+  rect(440, 110, 30, 30);
+  fill(255, 225, 0);
+  rect(330, 110, 90, 30);
+  rect(350, 40, 50, 70);
+  rect(365, 20, 20, 20);
+  rect(200, 160, 350, 40);
+  fill(255, 210, 0);
+  rect(200, 100, 20, 100);
+  rect(530, 100, 20, 100);
+  rect(200, 160, 150, 40);
+  //crown
+  fill(0, 0, 0);
+  text("Congratulations you are the Flower Picker King!", 250, 650);
+  text("Press enter to go back!", 310, 670);
   pop();
   if (keyIsDown(13)) {
     state = "start";
@@ -901,7 +936,7 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "start";
+let state = "win";
 function draw() {
   // This is for the collision
   flowerCollision(playerX, playerY);
