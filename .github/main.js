@@ -647,7 +647,7 @@ function levelScreen2() {
   //flower collected
   if (keyIsDown(69)) {
     state = "level3";
-    timer = 5;
+    timer3 = 6;
     timerActive = false;
     playerX = 350;
     playerY = 350;
