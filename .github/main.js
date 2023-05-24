@@ -891,12 +891,13 @@ function loseScreen() {
   fill(0, 0, 205);
   rect(300, 336, 40, 40);
   rect(300, 386, 40, 40);
+
   pop();
   fill(0, 0, 0);
   push();
   textSize(30);
-  text("OH NO YOU LOST", 270, 700);
-  text("Press R to get to the start again!", 190, 750);
+  text("OH NO YOU LOST", 250, 600);
+  text("Press R to get to the start again!", 160, 650);
   pop();
   if (keyIsDown(82)) {
     state = "start";
@@ -975,7 +976,7 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "start";
+let state = "lose";
 function draw() {
   // This is for the collision
   flowerCollision(playerX, playerY);
