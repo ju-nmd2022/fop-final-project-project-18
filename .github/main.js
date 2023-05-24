@@ -347,13 +347,15 @@ function startScreen() {
   fill(255, 255, 255);
   rect(150, 200, 400);
   fill(0, 0, 0);
-  text("Welcome to Flower Picker!", 275, 300);
-  text("Your objective is to pick up 10 flowers!", 250, 330);
-  text("But be careful so that the timer does not catch you!", 220, 355);
-  text("Click Space in order to start the game", 250, 380);
-  text("Tip use the arrow keys! To move around the character", 230, 420);
-  text("Press Enter to Activate the game and start collecting", 230, 460);
+  textAlign(CENTER);
+  text("Welcome to Flower Picker!", 350, 300);
+  text("Your objective is to pick up 10 flowers!", 350, 330);
+  text("But be careful so that the timer does not catch you!", 350, 355);
+  text("Click Space in order to start the game", 350, 380);
+  text("Tip use the arrow keys! To move around the character", 350, 420);
+  text("Press Enter to Activate the game and start collecting", 350, 460);
   fill(255, 255, 255);
+  textAlign(LEFT);
 
   bush(200, 120, 0.5);
   bush(400, 100, 0.5);
