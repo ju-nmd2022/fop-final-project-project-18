@@ -701,7 +701,7 @@ function levelScreen3() {
     move = 0;
   }
   if (isBoostActive) {
-    move = move + 7;
+    move = move + 5;
   }
 
   background(126, 200, 80);
