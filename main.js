@@ -950,7 +950,7 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "level2";
+let state = "start";
 
 function draw() {
   // This is for the collision
