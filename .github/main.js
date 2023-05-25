@@ -14,8 +14,10 @@ let timer = 15;
 let timer2 = 10;
 let timer3 = 6;
 let timerActive = false;
+let isBoostActive = false;
 
 function flowers(x, y, s) {
+  push();
   fill(0, 255, 0);
   noStroke();
   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
@@ -32,9 +34,33 @@ function flowers(x, y, s) {
   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
   fill(255, 255, 0);
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+  pop();
 }
-function flowerPink(x, y, s) {
-  fill(0, 255, 0);
+// function flowerPink(x, y, s) {
+//   fill(0, 255, 0);
+//   noStroke();
+//   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
+//   rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
+//   rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
+//   rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
+//   rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
+//   rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
+//   rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
+//   fill(255, 0, 200);
+//   rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
+//   rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
+//   rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
+//   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
+//   fill(255, 255, 0);
+//   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+// }
+function flowerPink(x, y, s, isPink) {
+  push();
+  if (isPink) {
+    fill(255, 255, 255); // Change color to white for flower5
+  } else {
+    fill(0, 255, 0); // Use default color for other flowers
+  }
   noStroke();
   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
   rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
@@ -50,8 +76,10 @@ function flowerPink(x, y, s) {
   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
   fill(255, 255, 0);
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+  pop();
 }
 function flowerBrown(x, y, s) {
+  push();
   fill(0, 255, 0);
   noStroke();
   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
@@ -68,8 +96,10 @@ function flowerBrown(x, y, s) {
   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
   fill(255, 255, 0);
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+  pop();
 }
 function flowerYellow(x, y, s) {
+  push();
   fill(0, 255, 0);
   noStroke();
   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
@@ -86,8 +116,10 @@ function flowerYellow(x, y, s) {
   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
   fill(255, 255, 0);
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+  pop();
 }
 function flowerBlue(x, y, s) {
+  push();
   fill(0, 255, 0);
   noStroke();
   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
@@ -104,8 +136,11 @@ function flowerBlue(x, y, s) {
   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
   fill(255, 255, 0);
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
+  pop();
 }
 function bush(x, y, s) {
+  push();
+  noStroke();
   fill(0, 120, 0);
   rect(x, y + 100 * s, 40 * s, 40 * s);
   rect(x + 40 * s, y + 100 * s, 40 * s, 40 * s);
@@ -127,25 +162,7 @@ function bush(x, y, s) {
   fill(0, 110, 0);
   rect(x + 70 * s, y + 115 * s, 25 * s, 25 * s);
   rect(x + 110 * s, y + 115 * s, 25 * s, 25 * s);
-}
-function lawnMower(x, y, s) {
-  // lawnmower body
-  strokeWeight(4 * s);
-  stroke(0);
-  fill(255, 204, 0);
-  rect(x, y, 80 * s, 20 * s, 10 * s);
-
-  // lawnmower wheel
-  strokeWeight(4 * s);
-  stroke(0);
-  fill(61);
-  ellipse(x + 20 * s, y + 20 * s, 20 * s, 20 * s);
-  ellipse(x + 60 * s, y + 20 * s, 20 * s, 20 * s);
-
-  // lawnmower handle
-  strokeWeight(4 * s);
-  stroke(0);
-  line(x + 70 * s, y, x + 100 * s, y - 40 * s);
+  pop();
 }
 function playerFlower(x, y, s) {
   if (keyIsDown(LEFT_ARROW)) {
@@ -207,7 +224,7 @@ function playerFlower(x, y, s) {
   //mouth
   fill(255, 179, 179);
   rect(x + 80 * s, y + 200 * s, 40 * s, 10 * s);
-  pop();
+
   //flower
   fill(0, 255, 0);
   noStroke();
@@ -221,7 +238,7 @@ function playerFlower(x, y, s) {
   rect(x + 160 * s, y + 250 * s, 30 * s, 20 * s);
   fill(255, 255, 0);
   rect(x + 170 * s, y + 245 * s, 10 * s, 10 * s);
-
+  pop();
   playerX = x; // update x and y to the new position
   playerY = y;
 }
@@ -343,6 +360,7 @@ function reversedPlayerOne(x, y, s) {
   playerY = y;
 }
 function startScreen() {
+  push();
   background(126, 200, 80);
   fill(255, 255, 255);
   rect(150, 200, 400);
@@ -372,14 +390,13 @@ function startScreen() {
   }
   flowers(300, 380, 1.0);
   fill(0, 0, 0);
-  push();
+
   textSize(7);
   text("Programmed by Elias", 100, 800);
   flowerPink(380, 50, 0.5);
   flowerBrown(100, 100, 0.4);
   flowerYellow(500, 200, 0.7);
   flowerBlue(-60, 200, 0.7);
-  pop();
   if (keyIsDown(32)) {
     state = "Game";
     timer = 15;
@@ -400,8 +417,10 @@ function startScreen() {
       flower9,
     ];
   }
+  pop();
 }
 function gameScreen() {
+  push();
   //start the game
   if (keyIsDown(13)) {
     isGameActive = true;
@@ -444,7 +463,7 @@ function gameScreen() {
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
     fill(255, 255, 255);
-    flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
+    flowerYellow(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
   }
   //to here
   //flower collected:
@@ -558,8 +577,10 @@ function gameScreen() {
       },
     ];
   }
+  pop();
 }
 function levelScreen2() {
+  push();
   //start the game
   if (keyIsDown(13)) {
     isGameActive = true;
@@ -602,7 +623,7 @@ function levelScreen2() {
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
     fill(255, 255, 255);
-    flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
+    flowerYellow(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
   }
   //to here
   //flower collected:
@@ -650,73 +671,23 @@ function levelScreen2() {
   if (keyIsDown(69)) {
     state = "level3";
     timer3 = 6;
-    timerActive = false;
-    playerX = 350;
-    playerY = 350;
     flowerCollected = 0;
     flowerArray = [
-      {
-        x: Math.random() * 650,
-        y: flower0.y,
-        width: flower0.width,
-        height: flower0.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower1.y,
-        width: flower1.width,
-        height: flower1.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower2.y,
-        width: flower2.width,
-        height: flower2.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower3.y,
-        width: flower3.width,
-        height: flower3.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower4.y,
-        width: flower4.width,
-        height: flower4.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower5.y,
-        width: flower5.width,
-        height: flower5.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower6.y,
-        width: flower6.width,
-        height: flower6.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower7.y,
-        width: flower7.width,
-        height: flower7.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower8.y,
-        width: flower8.width,
-        height: flower8.height,
-      },
-      {
-        x: Math.random() * 650,
-        y: flower9.y,
-        width: flower9.width,
-        height: flower9.height,
-      },
+      flower1,
+      flower2,
+      flower4,
+      flower0,
+      flower3,
+      flower5,
+      flower6,
+      flower7,
+      flower8,
+      flower9,
     ];
+    playerX = 350;
+    playerY = 350;
   }
+  pop();
 }
 function levelScreen3() {
   //start the game
@@ -729,6 +700,10 @@ function levelScreen3() {
   } else {
     move = 0;
   }
+  if (isBoostActive) {
+    move = move + 7;
+  }
+
   background(126, 200, 80);
   fill(126, 200, 80);
   rect(0, 0, 800);
@@ -758,10 +733,21 @@ function levelScreen3() {
   //flowers
   playerFlower(playerX, playerY, 0.2);
   //Got help from oliver and charlie on this code!
+  // for (let i = 0; i < flowerArray.length; i++) {
+  //   let flower = flowerArray[i];
+  //   fill(255, 255, 255);
+  //   flowerPink(flower.x, flower.y, 0.2, color(255, 0, 0)); // Use red color for flower5
+
+  //   // flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
+  // }
+
   for (let i = 0; i < flowerArray.length; i++) {
     let flower = flowerArray[i];
-    fill(255, 255, 255);
-    flowerPink(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
+    if (flower === flower5) {
+      flowerPink(flower.x, flower.y, 0.2, true); // Use different color for flower5
+    } else {
+      flowerPink(flower.x, flower.y, 0.2, false); // Use default color for other flowers
+    }
   }
   //to here
   //flower collected:
@@ -787,6 +773,7 @@ function levelScreen3() {
   }
   if (timer3 == 0) {
     isGameActive = false;
+    isBoostActive = false;
     state = "lose";
   }
   //timer
@@ -794,6 +781,7 @@ function levelScreen3() {
   if (flowerCollected === 10) {
     isGameActive = false;
     timerActive = false;
+    isBoostActive = false;
 
     console.log("You won!");
     push();
@@ -804,7 +792,7 @@ function levelScreen3() {
     text("You cleared all the levels well done!", 280, 430);
     pop();
   }
-  //flower collected
+  //flower collected = you won
   if (keyIsDown(81)) {
     state = "win";
   }
@@ -979,8 +967,29 @@ let flowerArray = [
   flower9,
 ];
 let state = "start";
+
 function draw() {
   // This is for the collision
+  // flowerCollision(playerX, playerY);
+  // function flowerCollision(playerX, playerY) {
+  //   for (let i = 0; i < flowerArray.length; i++) {
+  //     let flower = flowerArray[i];
+  //     if (
+  //       playerX > flower.x &&
+  //       playerX < flower.x + flower.width &&
+  //       playerY < flower.y &&
+  //       playerY + 50 > flower.y
+  //     ) {
+  //       // Collision detected, perform actions here
+  //       flowerCollected++;
+  //       console.log(flowerCollected, i);
+
+  //       // Remove the flower from the array
+  //       flowerArray.splice(i, 1);
+  //       break;
+  //     }
+  //   }
+  // }
   flowerCollision(playerX, playerY);
   function flowerCollision(playerX, playerY) {
     for (let i = 0; i < flowerArray.length; i++) {
@@ -994,6 +1003,10 @@ function draw() {
         // Collision detected, perform actions here
         flowerCollected++;
         console.log(flowerCollected, i);
+
+        if (flower === flower5 && state === "level3") {
+          isBoostActive = true; // Activate the boost only in level3
+        }
 
         // Remove the flower from the array
         flowerArray.splice(i, 1);
