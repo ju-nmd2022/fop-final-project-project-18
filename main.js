@@ -36,24 +36,6 @@ function flowers(x, y, s) {
   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
   pop();
 }
-// function flowerPink(x, y, s) {
-//   fill(0, 255, 0);
-//   noStroke();
-//   rect(x + 200 * s, y + 200 * s, 20 * s, 190 * s);
-//   rect(x + 220 * s, y + 260 * s, 20 * s, 20 * s);
-//   rect(x + 240 * s, y + 220 * s, 20 * s, 40 * s);
-//   rect(x + 260 * s, y + 220 * s, 20 * s, 20 * s);
-//   rect(x + 180 * s, y + 290 * s, 20 * s, 40 * s);
-//   rect(x + 160 * s, y + 290 * s, 20 * s, 20 * s);
-//   rect(x + 140 * s, y + 270 * s, 20 * s, 20 * s);
-//   fill(255, 0, 200);
-//   rect(x + 180 * s, y + 150 * s, 60 * s, 50 * s);
-//   rect(x + 170 * s, y + 130 * s, 40 * s, 50 * s);
-//   rect(x + 210 * s, y + 130 * s, 40 * s, 50 * s);
-//   rect(x + 180 * s, y + 110 * s, 60 * s, 40 * s);
-//   fill(255, 255, 0);
-//   rect(x + 200 * s, y + 150 * s, 20 * s, 20 * s);
-// }
 function flowerPink(x, y, s, isPink) {
   push();
   if (isPink) {
@@ -653,7 +635,7 @@ function levelScreen2() {
     state = "lose";
   }
   //timer
-  //flower collected
+  //flower collected what happens
   if (flowerCollected === 10) {
     isGameActive = false;
     timerActive = false;
@@ -665,6 +647,8 @@ function levelScreen2() {
     fill(0, 0, 0);
     text("Nice press E", 340, 390);
     text("You anvanced to the next level", 300, 430);
+    text("In the next level pick up the miss-matched", 270, 470);
+    text("flower to get a boost of speed", 300, 490);
     pop();
   }
   //flower collected
@@ -966,30 +950,10 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "start";
+let state = "level2";
 
 function draw() {
   // This is for the collision
-  // flowerCollision(playerX, playerY);
-  // function flowerCollision(playerX, playerY) {
-  //   for (let i = 0; i < flowerArray.length; i++) {
-  //     let flower = flowerArray[i];
-  //     if (
-  //       playerX > flower.x &&
-  //       playerX < flower.x + flower.width &&
-  //       playerY < flower.y &&
-  //       playerY + 50 > flower.y
-  //     ) {
-  //       // Collision detected, perform actions here
-  //       flowerCollected++;
-  //       console.log(flowerCollected, i);
-
-  //       // Remove the flower from the array
-  //       flowerArray.splice(i, 1);
-  //       break;
-  //     }
-  //   }
-  // }
   flowerCollision(playerX, playerY);
   function flowerCollision(playerX, playerY) {
     for (let i = 0; i < flowerArray.length; i++) {
