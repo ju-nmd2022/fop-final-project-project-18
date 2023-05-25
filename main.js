@@ -16,6 +16,11 @@ let timer3 = 6;
 let timerActive = false;
 let isBoostActive = false;
 
+function setup() {
+  createCanvas(800, 800);
+  frameRate(30);
+}
+
 function flowers(x, y, s) {
   push();
   fill(0, 255, 0);
