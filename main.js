@@ -17,7 +17,7 @@ let timerActive = false;
 let isBoostActive = false;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(850, 850);
   frameRate(30);
 }
 
@@ -422,6 +422,7 @@ function gameScreen() {
   fill(126, 200, 80);
   rect(0, 0, 800);
   noStroke();
+
   fill(147, 179, 130);
   //the right path
   rect(400, 200, 190, 40);
@@ -444,6 +445,7 @@ function gameScreen() {
   bush(450, 400, 0.4);
   bush(100, 550, 0.7);
   bush(440, 590, 0.4);
+
   //flowers
   playerFlower(playerX, playerY, 0.2);
   //Got help from oliver and charlie on this code!
@@ -453,14 +455,7 @@ function gameScreen() {
     flowerYellow(flower.x, flower.y, 0.2); // Draw the flower at the specified coordinates and scale
   }
   //to here
-  //flower collected:
-  push();
-  fill(0, 160, 0);
-  rect(90, 710, 200, 80);
-  fill(0, 255, 0);
-  textSize(20);
-  text("Flower collected: " + flowerCollected, 100, 750);
-  pop();
+
   //timer:
   push();
   fill(0, 0, 0);
@@ -480,6 +475,14 @@ function gameScreen() {
   }
   //timer
   //flower collected
+  //flower collected:
+  push();
+  fill(0, 160, 0);
+  rect(90, 710, 200, 80);
+  fill(0, 255, 0);
+  textSize(20);
+  text("Flower collected: " + flowerCollected, 100, 750);
+  pop();
   if (flowerCollected === 10) {
     isGameActive = false;
     timerActive = false;
@@ -493,6 +496,7 @@ function gameScreen() {
     text("You anvanced to the next level", 300, 430);
     pop();
   }
+
   //flower collected
   if (keyIsDown(87)) {
     state = "level2";
@@ -955,7 +959,7 @@ let flowerArray = [
   flower8,
   flower9,
 ];
-let state = "start";
+let state = "Game";
 
 function draw() {
   // This is for the collision
