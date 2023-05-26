@@ -20,7 +20,6 @@ function setup() {
   createCanvas(850, 850);
   frameRate(30);
 }
-
 function flowers(x, y, s) {
   push();
   fill(0, 255, 0);
