@@ -7,7 +7,6 @@ let playerY = 350;
 let startPlayerX = 50;
 let move = 15;
 let flowerCollected = 0;
-let mowerX = 600;
 let isGameActive = false;
 //timer help: https://editor.p5js.org/marynotari/sketches/S1T2ZTMp-
 let timer = 15;
@@ -845,6 +844,7 @@ let state = "start";
 
 function draw() {
   // This is for the collision
+  //this is also a part of the code a got help with!
   flowerCollision(playerX, playerY);
   function flowerCollision(playerX, playerY) {
     for (let i = 0; i < flowerArray.length; i++) {
@@ -855,6 +855,7 @@ function draw() {
         playerY < flower.y &&
         playerY + 50 > flower.y
       ) {
+        //to here
         // Collision detected, perform actions here
         flowerCollected++;
         console.log(flowerCollected, i);
